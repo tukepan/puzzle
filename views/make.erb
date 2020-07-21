@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>パズルを作る</title>
+</head>
+<body>
+  <div>
+
+    <form action="/new_puzzle" method="post" enctype="multipart/form-data">
+      <P><input type="text" name="name"></P>
+      <input type="submit" value="POST">
+    </form>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <% @puzzles.each do |puzzle| %>
+      <div>
+        <p><%= puzzle.name %></p>
+        <div>
+          <form action="/delete_puzzle/<%= puzzle.id %>" method="post">
+            <input type="submit" value="DELTE">
+          </form>
+          <form action="/new" method="post" enctype="multipart/form-data">
+            <P><input type="file" name="file"></P>
+              <%= f.hidden_field :puzzle_id, :value => @puzzle.id %>
+            <input type="submit" value="POST">
+          </form>
+          <% @contents.each do |content| %>
+            <div>
+              <div>
+                <form action="/delete_image/<%= content.id %>" method="post">
+                  <input type="submit" value="DELTE">
+                </form>
+                <% unless content.img.empty? %>
+                  <p><img src="<%= content.img %>"></P>
+                  <p><%= content.puzzle_id %></P>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <div>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
