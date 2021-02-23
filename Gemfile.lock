@@ -16,6 +16,7 @@ GEM
     ast (2.4.0)
     aws_cf_signer (0.1.3)
     backports (3.17.2)
+    bcrypt (3.1.16)
     byebug (11.1.3)
     cloudinary (1.16.1)
       aws_cf_signer
@@ -57,7 +58,7 @@ GEM
     rack-protection (2.0.8.1)
       rack
     rainbow (3.0.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rcodetools (0.8.5.0)
     regexp_parser (1.7.0)
     rest-client (2.1.0)
@@ -113,11 +114,12 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (= 5.2.3)
+  bcrypt
   cloudinary
   debase
   dotenv
   fastri
-  pg (= 0.21)
+  pg (~> 0.21.0)
   pry
   pry-byebug
   rake

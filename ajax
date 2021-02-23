@@ -1,0 +1,43 @@
+$(function () {
+  $('#sortable-save-btn').click((e) => {
+    var photographer = e.target.getAttribute('data-photographer')
+    var list = $('#list-' + photographer).children()
+    var photoworkIds = []
+    list.each(function (i, li) {
+      photoworkIds.push(li.getAttribute('data-id'))
+    })
+    $.ajax({
+      url: '/pgadmin/photo_works/update_position',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        "authenticity_token": $("#authenticity_token").val(),
+        photo_work_ids: JSON.stringify(photoworkIds)
+      },
+      timeout: 10000,
+      xhrFields: {
+        withCredentials: true
+      }
+    }).done(function (data) {
+      alert("写真を並び替えました。");
+    }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+      alert("エラーが発生しました。");
+    })
+
+    $('.pictures-wrapper').css('pointer-events', 'none');
+    $('.save-btn').css('display', 'none');
+    $('.sortable-btn').css('display', 'inline');
+  })
+});
+
+
+
+def update_position
+    photo_work_ids = JSON.parse(params[:photo_work_ids])
+    photo_work_ids.each_with_index do |id, index|
+      photo_work = PhotoWork.find_by(id: id)
+      next unless photo_work
+      photo_work.update(position: index + 1)
+    end
+    render json: {}, status: 200
+end

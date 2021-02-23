@@ -5,7 +5,32 @@
   <title>パズルを解く</title>
 </head>
 <body>
-  <form action="/solve" method="get">
-  </form>
+  <% @puzzles.each do |puzzle| %>
+    <div class="make">
+      <p><%= puzzle.name %></p>
+        <div class="make_box">
+          <div class="images">
+            <% puzzle.images.each do |image| %>
+              <div class="image">
+                <% unless image.img.empty? %>
+                  <p><img src="<%= image.img %>"></P>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="/assets/js/Sortable.min.js"></script>
+  <script>
+    $(function() {
+      Sortable.create($('.images')[0], {
+        animation: 110
+      });
+    });
+
+  </script>
+
 </body>
 </html>

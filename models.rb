@@ -12,3 +12,10 @@ end
 class Image < ActiveRecord::Base
   belongs_to :puzzle
 end
+
+class User < ActiveRecord::Base
+  has_secure_password
+end
+
+class History < ActiveRecord::Base
+end

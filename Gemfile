@@ -8,6 +8,7 @@ gem 'activerecord', '5.2.3'
 gem 'sinatra-activerecord'
 gem 'cloudinary'
 gem 'dotenv'
+gem 'bcrypt'
 
 group :development do
   gem 'sqlite3', '1.4.1'
@@ -23,5 +24,9 @@ end
 gem 'pry-byebug'
 
 group :production do
-  gem 'pg','0.21'
+  gem 'pg' , "~> 0.21.0"
+end
+
+group :development do
+  gem "sqlite3" , "1.4.1"
 end

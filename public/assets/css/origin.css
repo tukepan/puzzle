@@ -2,6 +2,7 @@
 body {
   margin: 0;
   padding: 0;
+  /* background-color: #000; */
   background-color: #fff;
 }
 
@@ -9,50 +10,70 @@ body {
   box-sizing: border-box;
 }
 
-.header {
-  width: 100%;
-  padding: 30px 4% 15px;
-  background-color: #337079;
-  position: fixed;
-  top: 0;
-  display: flex;
-  align-items: center;
-}
-
-.header .minibox-1 {
-  margin: 0;
-  padding: 0;
-  font-size: 225%;
-}
-
-.header .minibox-1 a {
-  text-decoration: none;
-  color: #fff;
-}
-
-nav {
-  margin: 0 0 0 auto;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  display: flex;
-}
-
-li {
-  margin: 0 0 0 15px;
-  font-size: 25px;
-}
-
-li a {
-  text-decoration: none;
-  color:#fff;
-}
-
 /* body 関連 */
+.top {
+  margin-top: 0;
+}
+
+header {
+  height: 150px;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #337079;
+  color: white;
+}
+
+header .headline {
+  line-height: 100px;
+  float: left;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+.nav-list {
+  line-height: 0px;
+  float: left;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.nav-list-item a {
+  text-decoration: none;
+  color: azure;
+}
+
+.nav-list-item a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  background-color:  #337079;
+  height: 80px;
+}
+
+.footer-menu a {
+  text-decoration: none;
+  color: azure;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  color: azure;
+}
+
 .container {
-  height: 500px;
+  height: 410px;
   position: relative;
 }
 
@@ -67,7 +88,7 @@ li a {
   border-bottom: solid 6px #627295;
   border-radius: 5px;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 15%;
 }
 
@@ -105,7 +126,7 @@ li a {
   border-bottom: solid 6px #627295;
   border-radius: 5px;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 55%;
 }
 
@@ -128,4 +149,47 @@ li a {
 
 .container .minibox-3 a:hover {
   text-decoration: underline;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  width: 848px;
+  background-color:  #337079;
+  padding: 60px 60px;
+  margin: 0;
+}
+
+.image {
+  width: 170px;
+  height: 130px;
+  position: relative;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.image input {
+  position: absolute;
+  top: 2px;
+  left: 30px;
+}
+
+.image img {
+  height: 126px;
+  margin: -10% 16%;
+}
+
+.make_forms {
+  display: flex;
+}
+
+.make_box {
+  display: flex;
+}
+
+.make_container {
+  margin: 0 10px;
 }

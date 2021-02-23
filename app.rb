@@ -25,10 +25,11 @@ get '/make' do
 end
 
 get '/solve' do
+  @puzzles = Puzzle.all
   erb :solve
 end
 
-post '/new' do
+post '/new/:id' do
   img_url = ''
   if params[:file]
     img = params[:file]
@@ -37,9 +38,12 @@ post '/new' do
     img_url = upload['url']
   end
 
+  # binding.pry
+
   Image.create({
     img: img_url,
-    puzzle_id: params[:puzzle_id]
+    puzzle_id: params[:id],
+    answer_id: params[:id]
   })
 
   redirect '/make'
@@ -64,3 +68,41 @@ post '/delete_puzzle/:id' do
 
   redirect '/make'
 end
+
+get '/user' do
+  erb :index_user
+end
+
+get '/signin' do
+  erb :sign_in
+end
+
+get '/signup' do
+  erb :sign_up
+end
+
+post '/signin' do
+  user = User.find_by(mail: params[:mail])
+  if user && user.authenticate(params[:password])
+    session[:user] = user.id
+  end
+  redirect '/'
+end
+
+post '/signup' do
+  @user = User.create(mail:params[:mail], password:params[:password],
+  password_confirmation:params[:password_confirmation])
+  if @user.persisted?
+    session[:user] = @user.id
+  end
+  redirect '/'
+end
+
+get '/signouot' do
+  session[:user] = nill
+  redirect '/'
+end
+
+# if @user = true then
+
+# end
