@@ -10,7 +10,7 @@
       <p><%= puzzle.name %></p>
         <div class="make_box">
           <div class="images">
-            <% puzzle.images.each do |image| %>
+            <% puzzle.images.shuffle.each do |image| %>
               <div class="image">
                 <% unless image.img.empty? %>
                   <p><img src="<%= image.img %>"></P>
@@ -26,10 +26,34 @@
   <script>
     $(function() {
       Sortable.create($('.images')[0], {
+        grop: "images",
         animation: 110
       });
     });
-
+  </script>
+  <script>
+    $(function() {
+      Sortable.create($('.images')[1], {
+        grop: "images",
+        animation: 110
+      });
+    });
+  </script>
+  <script>
+    $(function() {
+      Sortable.create($('.images')[2], {
+        grop: "images",
+        animation: 110
+      });
+    });
+  </script>
+  <script>
+    $(function() {
+      Sortable.create($('.images')[3], {
+        grop: "images",
+        animation: 110
+      });
+    });
   </script>
 
 </body>

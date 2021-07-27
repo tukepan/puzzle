@@ -26,6 +26,10 @@ end
 
 get '/solve' do
   @puzzles = Puzzle.all
+  puzzle = [@puzzles]
+  puzzle.shuffle
+  rng = Random.new
+  rng2 = rng.dup
   erb :solve
 end
 
@@ -102,7 +106,3 @@ get '/signouot' do
   session[:user] = nill
   redirect '/'
 end
-
-# if @user = true then
-
-# end
